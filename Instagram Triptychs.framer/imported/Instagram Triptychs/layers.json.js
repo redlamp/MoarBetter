@@ -8,90 +8,195 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
         "children" : [
           {
             "maskFrame" : null,
-            "id" : "DF26A279-02F7-414C-A6AC-88B1317030C4",
+            "id" : "800D4F76-44BC-465D-9A9C-2E49366D9A50",
             "visible" : true,
             "children" : [
 
             ],
             "image" : {
-              "path" : "images\/Layer-Add2-DF26A279-02F7-414C-A6AC-88B1317030C4.png",
+              "path" : "images\/Layer-Add3Top-800D4F76-44BC-465D-9A9C-2E49366D9A50.png",
               "frame" : {
-                "y" : 1197,
-                "x" : 343,
-                "width" : 64,
-                "height" : 65
+                "y" : 1238,
+                "x" : 416,
+                "width" : 71,
+                "height" : 72
               }
             },
             "imageType" : "png",
             "layerFrame" : {
-              "y" : 1197,
-              "x" : 343,
-              "width" : 64,
-              "height" : 65
+              "y" : 1238,
+              "x" : 416,
+              "width" : 71,
+              "height" : 72
             },
-            "name" : "Add2"
+            "name" : "Add3Top"
           },
           {
             "maskFrame" : null,
-            "id" : "73A4E740-7376-4C92-A3C2-1DDCAF8DEE12",
+            "id" : "F01AB2BB-6D68-41A5-9381-4A47EB18EA22",
             "visible" : true,
             "children" : [
 
             ],
             "image" : {
-              "path" : "images\/Layer-Add3-73A4E740-7376-4C92-A3C2-1DDCAF8DEE12.png",
+              "path" : "images\/Layer-Add3Mid-F01AB2BB-6D68-41A5-9381-4A47EB18EA22.png",
               "frame" : {
-                "y" : 1231,
-                "x" : 408,
-                "width" : 65,
-                "height" : 65
+                "y" : 1238,
+                "x" : 436,
+                "width" : 71,
+                "height" : 72
               }
             },
             "imageType" : "png",
             "layerFrame" : {
-              "y" : 1231,
-              "x" : 408,
-              "width" : 65,
-              "height" : 65
+              "y" : 1238,
+              "x" : 436,
+              "width" : 71,
+              "height" : 72
             },
-            "name" : "Add3"
+            "name" : "Add3Mid"
           },
           {
             "maskFrame" : null,
-            "id" : "B164D71D-BD2C-4CBE-BEE5-3A7832B93C4A",
+            "id" : "44B975E1-7CB9-43F2-87AD-874F0F9EEC29",
             "visible" : true,
             "children" : [
 
             ],
             "image" : {
-              "path" : "images\/Layer-Add1-B164D71D-BD2C-4CBE-BEE5-3A7832B93C4A.png",
+              "path" : "images\/Layer-Add3Back-44B975E1-7CB9-43F2-87AD-874F0F9EEC29.png",
               "frame" : {
-                "y" : 1231,
-                "x" : 278,
-                "width" : 65,
-                "height" : 65
+                "y" : 1238,
+                "x" : 457,
+                "width" : 71,
+                "height" : 72
               }
             },
             "imageType" : "png",
             "layerFrame" : {
-              "y" : 1231,
-              "x" : 278,
-              "width" : 65,
-              "height" : 65
+              "y" : 1238,
+              "x" : 457,
+              "width" : 71,
+              "height" : 72
             },
-            "name" : "Add1"
+            "name" : "Add3Back"
           }
         ],
-        "id" : "C0BD91BA-9E53-4E0F-B378-C01893BFC0AA",
+        "id" : "73A4E740-7376-4C92-A3C2-1DDCAF8DEE12",
         "visible" : true,
         "imageType" : "png",
         "layerFrame" : {
-          "y" : 1197,
-          "x" : 278,
-          "width" : 195,
-          "height" : 99
+          "y" : 1238,
+          "x" : 414,
+          "width" : 116,
+          "height" : 76
         },
-        "name" : "AddPhotos"
+        "name" : "Add3"
+      },
+      {
+        "maskFrame" : null,
+        "children" : [
+          {
+            "maskFrame" : null,
+            "id" : "D4AA59CE-8F0B-40C9-A573-73531E4B44DE",
+            "visible" : true,
+            "children" : [
+
+            ],
+            "image" : {
+              "path" : "images\/Layer-Add2Top-D4AA59CE-8F0B-40C9-A573-73531E4B44DE.png",
+              "frame" : {
+                "y" : 1198,
+                "x" : 329,
+                "width" : 72,
+                "height" : 72
+              }
+            },
+            "imageType" : "png",
+            "layerFrame" : {
+              "y" : 1198,
+              "x" : 329,
+              "width" : 72,
+              "height" : 72
+            },
+            "name" : "Add2Top"
+          },
+          {
+            "maskFrame" : null,
+            "id" : "1887EFA5-3C01-49C4-A259-8AA60286F554",
+            "visible" : true,
+            "children" : [
+
+            ],
+            "image" : {
+              "path" : "images\/Layer-Add2Back-1887EFA5-3C01-49C4-A259-8AA60286F554.png",
+              "frame" : {
+                "y" : 1198,
+                "x" : 349,
+                "width" : 72,
+                "height" : 72
+              }
+            },
+            "imageType" : "png",
+            "layerFrame" : {
+              "y" : 1198,
+              "x" : 349,
+              "width" : 72,
+              "height" : 72
+            },
+            "name" : "Add2Back"
+          }
+        ],
+        "id" : "DF26A279-02F7-414C-A6AC-88B1317030C4",
+        "visible" : true,
+        "imageType" : "png",
+        "layerFrame" : {
+          "y" : 1198,
+          "x" : 329,
+          "width" : 92,
+          "height" : 72
+        },
+        "name" : "Add2"
+      },
+      {
+        "maskFrame" : null,
+        "children" : [
+          {
+            "maskFrame" : null,
+            "id" : "64F0ED55-F4AD-46AA-BD88-CCB30C06C949",
+            "visible" : true,
+            "children" : [
+
+            ],
+            "image" : {
+              "path" : "images\/Layer-Add1Top-64F0ED55-F4AD-46AA-BD88-CCB30C06C949.png",
+              "frame" : {
+                "y" : 1238,
+                "x" : 252,
+                "width" : 72,
+                "height" : 72
+              }
+            },
+            "imageType" : "png",
+            "layerFrame" : {
+              "y" : 1238,
+              "x" : 252,
+              "width" : 72,
+              "height" : 72
+            },
+            "name" : "Add1Top"
+          }
+        ],
+        "id" : "B164D71D-BD2C-4CBE-BEE5-3A7832B93C4A",
+        "visible" : true,
+        "imageType" : "png",
+        "layerFrame" : {
+          "y" : 1238,
+          "x" : 252,
+          "width" : 72,
+          "height" : 72
+        },
+        "name" : "Add1"
       },
       {
         "maskFrame" : null,
