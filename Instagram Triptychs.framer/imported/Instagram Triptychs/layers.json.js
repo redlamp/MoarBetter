@@ -16,7 +16,7 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
             "image" : {
               "path" : "images\/Layer-Add3Top-800D4F76-44BC-465D-9A9C-2E49366D9A50.png",
               "frame" : {
-                "y" : 1238,
+                "y" : 1237,
                 "x" : 416,
                 "width" : 71,
                 "height" : 72
@@ -24,7 +24,7 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
             },
             "imageType" : "png",
             "layerFrame" : {
-              "y" : 1238,
+              "y" : 1237,
               "x" : 416,
               "width" : 71,
               "height" : 72
@@ -41,7 +41,7 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
             "image" : {
               "path" : "images\/Layer-Add3Mid-F01AB2BB-6D68-41A5-9381-4A47EB18EA22.png",
               "frame" : {
-                "y" : 1238,
+                "y" : 1237,
                 "x" : 436,
                 "width" : 71,
                 "height" : 72
@@ -49,7 +49,7 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
             },
             "imageType" : "png",
             "layerFrame" : {
-              "y" : 1238,
+              "y" : 1237,
               "x" : 436,
               "width" : 71,
               "height" : 72
@@ -66,7 +66,7 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
             "image" : {
               "path" : "images\/Layer-Add3Back-44B975E1-7CB9-43F2-87AD-874F0F9EEC29.png",
               "frame" : {
-                "y" : 1238,
+                "y" : 1237,
                 "x" : 457,
                 "width" : 71,
                 "height" : 72
@@ -74,7 +74,7 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
             },
             "imageType" : "png",
             "layerFrame" : {
-              "y" : 1238,
+              "y" : 1237,
               "x" : 457,
               "width" : 71,
               "height" : 72
@@ -86,10 +86,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
         "visible" : true,
         "imageType" : "png",
         "layerFrame" : {
-          "y" : 1238,
-          "x" : 414,
-          "width" : 116,
-          "height" : 76
+          "y" : 1237,
+          "x" : 416,
+          "width" : 112,
+          "height" : 72
         },
         "name" : "Add3"
       },

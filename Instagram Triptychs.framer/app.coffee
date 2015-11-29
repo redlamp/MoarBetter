@@ -24,7 +24,6 @@ Grid = new GridModule
 	margin: 3
 	backgroundColor: "magenta"
 	width: Screen.width
-	height: 0
 	drawBehavior: (c,x,y) ->
 		c.superLayer = @content
 		c.animate
@@ -40,6 +39,14 @@ diptych_arr = [sketch.Diptych2, sketch.Diptych1]
 triptych_arr = [sketch.Triptych3, sketch.Triptych2, sketch.Triptych1]
 photos_arr = [single_arr, diptych_arr, triptych_arr]
 
+# Test cells
+# for [0..20]
+# 	layer = new Layer
+# 	layer.width = 248
+# 	layer.height = 248
+# 	layer.backgroundColor= Utils.randomColor()
+# 	Grid.add(layer)
+	
 for arr, a in photos_arr
 	b = sketch["Add"+(a+1)]
 	b.photos = photos_arr[a]
@@ -49,6 +56,7 @@ for arr, a in photos_arr
 			cell.superLayer = Grid.content
 			cell.x = (i+1) * -(Grid.cellW + Grid.marginX)
 			cell.y = 0
+# 			cell.on Events.AnimationEnd, Grid.updateContentSize
 			Grid.insert(cell, 0)
 
 # Button 1
@@ -80,7 +88,7 @@ Add3.on Events.AnimationEnd, (ani, layer) ->
 	Add3Mid.animate(properties: {x: 20}, time: time, delay: delay)
 	Add3Back.animate(properties: {x: 40}, time: time, delay: delay)
 
-Add1.animate(properties: {x: 256, y: 1240, opacity: 1}, time: .5, delay: .5);
-Add2.animate(properties: {x: 339, y: 1200, opacity: 1}, time: .5, delay: .6);
-Add3.animate(properties: {x: 420, y: 1240, opacity: 1}, time: .5, delay: .7);
+Add1.animate(properties: {x: 256, y: 1240, opacity: 1}, time: .5, delay: .0);
+Add2.animate(properties: {x: 339, y: 1200, opacity: 1}, time: .5, delay: .1);
+Add3.animate(properties: {x: 420, y: 1240, opacity: 1}, time: .5, delay: .2);
 
