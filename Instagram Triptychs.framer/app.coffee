@@ -14,6 +14,11 @@ sketch = Framer.Importer.load "imported/Instagram Triptychs"
 Page = ScrollComponent.wrap(sketch.Page)
 Page.scrollHorizontal = false
 Page.height = Screen.height - sketch.TopNav.height - sketch.BotNav.height
+Page.on Events.Move, ->
+	b.ignoreEvents = true for b in Adds
+	
+Page.on Events.ScrollAnimationDidEnd, ->
+		b.ignoreEvents = false for b in Adds
 
 Profile = sketch.Profile
 # Profile.visible = false
@@ -22,7 +27,6 @@ Grid = new GridModule
 	row: 3
 	cellW: 248
 	margin: 3
-	backgroundColor: "magenta"
 	width: Screen.width
 	drawBehavior: (c,x,y) ->
 		c.superLayer = @content
@@ -34,18 +38,23 @@ Grid = new GridModule
 Grid.superLayer = Page.content
 Grid.y = Profile.height
 
+Grid.content.on "change:height", ->
+	Page.updateContent()
+
 single_arr = [sketch.Thumbnail]
 diptych_arr = [sketch.Diptych2, sketch.Diptych1]
 triptych_arr = [sketch.Triptych3, sketch.Triptych2, sketch.Triptych1]
 photos_arr = [single_arr, diptych_arr, triptych_arr]
 
 # Test cells
-# for [0..20]
-# 	layer = new Layer
-# 	layer.width = 248
-# 	layer.height = 248
-# 	layer.backgroundColor= Utils.randomColor()
-# 	Grid.add(layer)
+for [0..31]
+	layer = new Layer
+	layer.width = 248
+	layer.height = 248
+	layer.backgroundColor= Utils.randomColor()
+	Grid.add(layer)
+	layer.on Events.AnimationEnd, ->
+		Grid.updateContentSize()
 	
 for arr, a in photos_arr
 	b = sketch["Add"+(a+1)]
@@ -56,8 +65,9 @@ for arr, a in photos_arr
 			cell.superLayer = Grid.content
 			cell.x = (i+1) * -(Grid.cellW + Grid.marginX)
 			cell.y = 0
-# 			cell.on Events.AnimationEnd, Grid.updateContentSize
 			Grid.insert(cell, 0)
+			cell.on Events.AnimationEnd, ->
+				Grid.updateContentSize()
 
 # Button 1
 Add1 = sketch.Add1
@@ -68,6 +78,8 @@ Add2Back = sketch.Add2Back
 Add3 = sketch.Add3
 Add3Mid = sketch.Add3Mid
 Add3Back = sketch.Add3Back
+Adds = [Add1, Add2, Add3]
+
 # Init Button Layout
 Add1.x = Add2.x = Add3.x = 339
 Add1.y = Add2.y = Add3.y =1260

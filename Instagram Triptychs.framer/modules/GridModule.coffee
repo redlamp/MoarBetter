@@ -22,10 +22,14 @@ class module.exports extends Layer
 		@content = new Layer
 			name: "content"
 			clip: false			
-			backgroundColor: "cyan"
+			backgroundColor: null
 			width: @width
 			height: @height
 			superLayer: this
+		
+		@content.on "change:height", ->
+			if @superLayer.height < @height
+				@superLayer.height = @height
 		
 		@drawBehavior = opt.drawBehavior ?= @defaultDrawBehavior
 		
@@ -52,6 +56,7 @@ class module.exports extends Layer
 	
 #	_draw: ->
 	draw: ->
+		print "GridModule.draw()"
 		for c, i in @data
 			cX = (i % @row) * (@cellW + @marginX)
 			cY = Math.floor(i / @row) * (@cellH + @marginY)
@@ -69,5 +74,5 @@ class module.exports extends Layer
 	
 #	_updateContentSize: ->
 	updateContentSize: ->
-		print "updateContentSize "+this.name
+		print "GridModule.updateContentSize()"
 		@content.height = @content.contentFrame().height
