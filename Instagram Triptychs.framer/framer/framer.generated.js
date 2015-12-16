@@ -5,9 +5,13 @@ window.__imported__ = window.__imported__ || {};
 window.__imported__["Instagram Triptychs/layers.json.js"] = [
   {
     "maskFrame" : null,
+    "id" : "3C0AAA89-18A2-481A-9E40-2A84E3FE673F",
+    "visible" : true,
     "children" : [
       {
         "maskFrame" : null,
+        "id" : "73A4E740-7376-4C92-A3C2-1DDCAF8DEE12",
+        "visible" : true,
         "children" : [
           {
             "maskFrame" : null,
@@ -26,6 +30,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
               }
             },
             "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
             "layerFrame" : {
               "y" : 1237,
               "x" : 416,
@@ -51,6 +59,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
               }
             },
             "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
             "layerFrame" : {
               "y" : 1237,
               "x" : 436,
@@ -76,6 +88,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
               }
             },
             "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
             "layerFrame" : {
               "y" : 1237,
               "x" : 457,
@@ -85,9 +101,11 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
             "name" : "Add3Back"
           }
         ],
-        "id" : "73A4E740-7376-4C92-A3C2-1DDCAF8DEE12",
-        "visible" : true,
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
           "y" : 1237,
           "x" : 416,
@@ -98,6 +116,8 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
       },
       {
         "maskFrame" : null,
+        "id" : "DF26A279-02F7-414C-A6AC-88B1317030C4",
+        "visible" : true,
         "children" : [
           {
             "maskFrame" : null,
@@ -116,6 +136,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
               }
             },
             "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
             "layerFrame" : {
               "y" : 1198,
               "x" : 329,
@@ -141,6 +165,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
               }
             },
             "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
             "layerFrame" : {
               "y" : 1198,
               "x" : 349,
@@ -150,9 +178,11 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
             "name" : "Add2Back"
           }
         ],
-        "id" : "DF26A279-02F7-414C-A6AC-88B1317030C4",
-        "visible" : true,
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
           "y" : 1198,
           "x" : 329,
@@ -163,6 +193,8 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
       },
       {
         "maskFrame" : null,
+        "id" : "B164D71D-BD2C-4CBE-BEE5-3A7832B93C4A",
+        "visible" : true,
         "children" : [
           {
             "maskFrame" : null,
@@ -181,6 +213,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
               }
             },
             "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
             "layerFrame" : {
               "y" : 1238,
               "x" : 252,
@@ -190,9 +226,11 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
             "name" : "Add1Top"
           }
         ],
-        "id" : "B164D71D-BD2C-4CBE-BEE5-3A7832B93C4A",
-        "visible" : true,
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
           "y" : 1238,
           "x" : 252,
@@ -228,6 +266,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                   }
                 },
                 "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
                 "layerFrame" : {
                   "y" : 15,
                   "x" : 13,
@@ -258,6 +300,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                       }
                     },
                     "imageType" : "png",
+                    "kind" : "group",
+                    "metadata" : {
+                      "opacity" : 1
+                    },
                     "layerFrame" : {
                       "y" : 10,
                       "x" : 690,
@@ -277,6 +323,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                   }
                 },
                 "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
                 "layerFrame" : {
                   "y" : 10,
                   "x" : 643,
@@ -296,6 +346,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
               }
             },
             "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
             "layerFrame" : {
               "y" : 7,
               "x" : 13,
@@ -315,6 +369,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
           }
         },
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
           "y" : 0,
           "x" : 0,
@@ -325,6 +383,8 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
       },
       {
         "maskFrame" : null,
+        "id" : "C2C1DD4F-B189-453E-8A2C-0F4AD478F93F",
+        "visible" : true,
         "children" : [
           {
             "maskFrame" : null,
@@ -363,6 +423,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                       }
                     },
                     "imageType" : "png",
+                    "kind" : "group",
+                    "metadata" : {
+                      "opacity" : 1
+                    },
                     "layerFrame" : {
                       "y" : 137,
                       "x" : 28,
@@ -382,6 +446,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                   }
                 },
                 "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
                 "layerFrame" : {
                   "y" : 137,
                   "x" : 28,
@@ -407,6 +475,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                   }
                 },
                 "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
                 "layerFrame" : {
                   "y" : 149,
                   "x" : 263,
@@ -432,6 +504,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                   }
                 },
                 "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
                 "layerFrame" : {
                   "y" : 149,
                   "x" : 420,
@@ -457,6 +533,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                   }
                 },
                 "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
                 "layerFrame" : {
                   "y" : 158,
                   "x" : 578,
@@ -482,6 +562,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                   }
                 },
                 "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
                 "layerFrame" : {
                   "y" : 210,
                   "x" : 203,
@@ -507,6 +591,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                   }
                 },
                 "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
                 "layerFrame" : {
                   "y" : 210,
                   "x" : 670,
@@ -532,6 +620,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                   }
                 },
                 "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
                 "layerFrame" : {
                   "y" : 308,
                   "x" : 21,
@@ -542,6 +634,8 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
               },
               {
                 "maskFrame" : null,
+                "id" : "60BB319C-FCE7-4045-AC96-4C08CDD06D00",
+                "visible" : true,
                 "children" : [
                   {
                     "maskFrame" : null,
@@ -560,6 +654,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                       }
                     },
                     "imageType" : "png",
+                    "kind" : "group",
+                    "metadata" : {
+                      "opacity" : 1
+                    },
                     "layerFrame" : {
                       "y" : 451,
                       "x" : 75,
@@ -585,6 +683,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                       }
                     },
                     "imageType" : "png",
+                    "kind" : "group",
+                    "metadata" : {
+                      "opacity" : 1
+                    },
                     "layerFrame" : {
                       "y" : 452,
                       "x" : 262,
@@ -610,6 +712,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                       }
                     },
                     "imageType" : "png",
+                    "kind" : "group",
+                    "metadata" : {
+                      "opacity" : 1
+                    },
                     "layerFrame" : {
                       "y" : 448,
                       "x" : 455,
@@ -635,6 +741,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                       }
                     },
                     "imageType" : "png",
+                    "kind" : "group",
+                    "metadata" : {
+                      "opacity" : 1
+                    },
                     "layerFrame" : {
                       "y" : 447,
                       "x" : 639,
@@ -660,6 +770,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                       }
                     },
                     "imageType" : "png",
+                    "kind" : "group",
+                    "metadata" : {
+                      "opacity" : 1
+                    },
                     "layerFrame" : {
                       "y" : 428,
                       "x" : 0,
@@ -669,9 +783,11 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
                     "name" : "TabsLayout"
                   }
                 ],
-                "id" : "60BB319C-FCE7-4045-AC96-4C08CDD06D00",
-                "visible" : true,
                 "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
                 "layerFrame" : {
                   "y" : 428,
                   "x" : 0,
@@ -691,6 +807,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
               }
             },
             "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
             "layerFrame" : {
               "y" : 117,
               "x" : 0,
@@ -700,9 +820,11 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
             "name" : "Profile"
           }
         ],
-        "id" : "C2C1DD4F-B189-453E-8A2C-0F4AD478F93F",
-        "visible" : true,
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
           "y" : 117,
           "x" : 0,
@@ -728,6 +850,10 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
           }
         },
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
           "y" : 1254,
           "x" : 0,
@@ -737,9 +863,11 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
         "name" : "BotNav"
       }
     ],
-    "id" : "3C0AAA89-18A2-481A-9E40-2A84E3FE673F",
-    "visible" : true,
     "imageType" : "png",
+    "kind" : "artboard",
+    "metadata" : {
+
+    },
     "layerFrame" : {
       "y" : 0,
       "x" : 0,
@@ -750,7 +878,230 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
   },
   {
     "maskFrame" : null,
+    "id" : "AF859C0F-B1E6-4E66-A8C4-81CED92B9987",
+    "visible" : false,
     "children" : [
+      {
+        "maskFrame" : null,
+        "id" : "A7BB552B-CFC5-4D11-A906-2DE821F2C39D",
+        "visible" : true,
+        "children" : [
+          {
+            "maskFrame" : null,
+            "id" : "AAC16417-3089-40F4-AFBD-AFA5F20CE44C",
+            "visible" : true,
+            "children" : [
+              {
+                "maskFrame" : null,
+                "id" : "EB62E429-22FF-44EE-9A53-BC38802A787D",
+                "visible" : true,
+                "children" : [
+
+                ],
+                "image" : {
+                  "path" : "images\/Layer-AcceptSet-EB62E429-22FF-44EE-9A53-BC38802A787D.png",
+                  "frame" : {
+                    "y" : 0,
+                    "x" : 209,
+                    "width" : 40,
+                    "height" : 40
+                  }
+                },
+                "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
+                "layerFrame" : {
+                  "y" : 0,
+                  "x" : 209,
+                  "width" : 40,
+                  "height" : 40
+                },
+                "name" : "AcceptSet"
+              },
+              {
+                "maskFrame" : null,
+                "id" : "4A49AA5D-8EA6-49D2-820A-9A339F3AE034",
+                "visible" : true,
+                "children" : [
+
+                ],
+                "image" : {
+                  "path" : "images\/Layer-CancelSet-4A49AA5D-8EA6-49D2-820A-9A339F3AE034.png",
+                  "frame" : {
+                    "y" : 0,
+                    "x" : 0,
+                    "width" : 40,
+                    "height" : 40
+                  }
+                },
+                "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
+                "layerFrame" : {
+                  "y" : 0,
+                  "x" : 0,
+                  "width" : 40,
+                  "height" : 40
+                },
+                "name" : "CancelSet"
+              },
+              {
+                "maskFrame" : null,
+                "id" : "29C7B433-238D-4E2B-8F8D-15F68471A305",
+                "visible" : true,
+                "children" : [
+
+                ],
+                "image" : {
+                  "path" : "images\/Layer-Resize-29C7B433-238D-4E2B-8F8D-15F68471A305.png",
+                  "frame" : {
+                    "y" : 209,
+                    "x" : 209,
+                    "width" : 40,
+                    "height" : 40
+                  }
+                },
+                "imageType" : "png",
+                "kind" : "group",
+                "metadata" : {
+                  "opacity" : 1
+                },
+                "layerFrame" : {
+                  "y" : 209,
+                  "x" : 209,
+                  "width" : 40,
+                  "height" : 40
+                },
+                "name" : "Resize"
+              }
+            ],
+            "image" : {
+              "path" : "images\/Layer-SetHighlight-AAC16417-3089-40F4-AFBD-AFA5F20CE44C.png",
+              "frame" : {
+                "y" : 0,
+                "x" : 0,
+                "width" : 249,
+                "height" : 249
+              }
+            },
+            "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
+            "layerFrame" : {
+              "y" : 0,
+              "x" : 0,
+              "width" : 249,
+              "height" : 249
+            },
+            "name" : "SetHighlight"
+          },
+          {
+            "maskFrame" : null,
+            "id" : "D79D6EBF-1368-4BE3-9200-E6FFF6A17DB2",
+            "visible" : true,
+            "children" : [
+
+            ],
+            "image" : {
+              "path" : "images\/Layer-Labels-D79D6EBF-1368-4BE3-9200-E6FFF6A17DB2.png",
+              "frame" : {
+                "y" : 64,
+                "x" : 129,
+                "width" : 87,
+                "height" : 143
+              }
+            },
+            "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
+            "layerFrame" : {
+              "y" : 64,
+              "x" : 129,
+              "width" : 87,
+              "height" : 143
+            },
+            "name" : "Labels"
+          },
+          {
+            "maskFrame" : null,
+            "id" : "CE411FC1-4F0B-4D53-A043-D05BA441A6A0",
+            "visible" : true,
+            "children" : [
+
+            ],
+            "image" : {
+              "path" : "images\/Layer-Values-CE411FC1-4F0B-4D53-A043-D05BA441A6A0.png",
+              "frame" : {
+                "y" : 42,
+                "x" : 34,
+                "width" : 84,
+                "height" : 171
+              }
+            },
+            "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
+            "layerFrame" : {
+              "y" : 42,
+              "x" : 34,
+              "width" : 84,
+              "height" : 171
+            },
+            "name" : "Values"
+          },
+          {
+            "maskFrame" : null,
+            "id" : "EAB077D0-B9F7-4093-B919-0EADF8282AA3",
+            "visible" : true,
+            "children" : [
+
+            ],
+            "image" : {
+              "path" : "images\/Layer-bg-EAB077D0-B9F7-4093-B919-0EADF8282AA3.png",
+              "frame" : {
+                "y" : 0,
+                "x" : 0,
+                "width" : 248,
+                "height" : 248
+              }
+            },
+            "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
+            "layerFrame" : {
+              "y" : 0,
+              "x" : 0,
+              "width" : 248,
+              "height" : 248
+            },
+            "name" : "bg"
+          }
+        ],
+        "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
+        "layerFrame" : {
+          "y" : 0,
+          "x" : 0,
+          "width" : 249,
+          "height" : 249
+        },
+        "name" : "Image"
+      },
       {
         "maskFrame" : null,
         "id" : "43579594-B3F9-411D-95A1-64FEFA22F711",
@@ -761,15 +1112,19 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
         "image" : {
           "path" : "images\/Layer-Triptych1-43579594-B3F9-411D-95A1-64FEFA22F711.png",
           "frame" : {
-            "y" : 0,
+            "y" : 251,
             "x" : 0,
             "width" : 248,
             "height" : 248
           }
         },
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
-          "y" : 0,
+          "y" : 251,
           "x" : 0,
           "width" : 248,
           "height" : 248
@@ -786,15 +1141,19 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
         "image" : {
           "path" : "images\/Layer-Triptych2-B33D5044-FFBC-405A-8453-EBE796DDEA69.png",
           "frame" : {
-            "y" : 0,
+            "y" : 251,
             "x" : 251,
             "width" : 248,
             "height" : 248
           }
         },
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
-          "y" : 0,
+          "y" : 251,
           "x" : 251,
           "width" : 248,
           "height" : 248
@@ -811,15 +1170,19 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
         "image" : {
           "path" : "images\/Layer-Triptych3-94DD2E1F-AB38-4B8F-84BD-7B8ACA0F41E4.png",
           "frame" : {
-            "y" : 0,
+            "y" : 251,
             "x" : 502,
             "width" : 248,
             "height" : 248
           }
         },
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
-          "y" : 0,
+          "y" : 251,
           "x" : 502,
           "width" : 248,
           "height" : 248
@@ -836,15 +1199,19 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
         "image" : {
           "path" : "images\/Layer-Thumbnail-233F7447-5192-43B0-8B66-4F16E8E8795D.png",
           "frame" : {
-            "y" : 251,
+            "y" : 502,
             "x" : 502,
             "width" : 248,
             "height" : 248
           }
         },
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
-          "y" : 251,
+          "y" : 502,
           "x" : 502,
           "width" : 248,
           "height" : 248
@@ -861,15 +1228,19 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
         "image" : {
           "path" : "images\/Layer-Diptych1-67062998-7C2F-4D19-8429-B1CEAB7F5804.png",
           "frame" : {
-            "y" : 251,
+            "y" : 502,
             "x" : 0,
             "width" : 248,
             "height" : 248
           }
         },
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
-          "y" : 251,
+          "y" : 502,
           "x" : 0,
           "width" : 248,
           "height" : 248
@@ -886,15 +1257,19 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
         "image" : {
           "path" : "images\/Layer-Diptych2-187D437F-F7BB-4CCA-8C41-7427549869BC.png",
           "frame" : {
-            "y" : 251,
+            "y" : 502,
             "x" : 251,
             "width" : 248,
             "height" : 248
           }
         },
         "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
         "layerFrame" : {
-          "y" : 251,
+          "y" : 502,
           "x" : 251,
           "width" : 248,
           "height" : 248
@@ -902,12 +1277,14 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
         "name" : "Diptych2"
       }
     ],
-    "id" : "AF859C0F-B1E6-4E66-A8C4-81CED92B9987",
-    "visible" : false,
     "imageType" : "png",
+    "kind" : "artboard",
+    "metadata" : {
+
+    },
     "layerFrame" : {
       "y" : 0,
-      "x" : 0,
+      "x" : 800,
       "width" : 750,
       "height" : 1334
     },
@@ -915,9 +1292,9 @@ window.__imported__["Instagram Triptychs/layers.json.js"] = [
   }
 ]
 if (typeof(DeviceComponent) !== "undefined") {DeviceComponent.Devices["iphone-6-silver"].deviceImageJP2 = false};
-window.Framer.Defaults.DeviceView = {"deviceScale":-1,"deviceType":"iphone-6-silver","contentScale":1,"orientation":0};
+window.Framer.Defaults.DeviceView = {"deviceScale":-1,"deviceType":"iphone-6plus-spacegray-hand","contentScale":1,"orientation":0};
 
-window.Framer.Defaults.DeviceComponent = {"deviceScale":-1,"deviceType":"iphone-6-silver","contentScale":1,"orientation":0};
+window.Framer.Defaults.DeviceComponent = {"deviceScale":-1,"deviceType":"iphone-6plus-spacegray-hand","contentScale":1,"orientation":0};
 
 window.FramerStudioInfo = {"deviceImagesUrl":"\/_server\/resources\/DeviceImages","documentTitle":"Instagram Triptychs.framer"};
 

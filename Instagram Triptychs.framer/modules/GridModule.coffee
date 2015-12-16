@@ -4,6 +4,7 @@ class module.exports extends Layer
 		initH = opt.height
 		super(opt)
 		@name = "GridModule"
+		@ref = this
 		@clip = false
 		@backgroundColor = opt.backgroundColor
 	
@@ -54,25 +55,26 @@ class module.exports extends Layer
 		@draw()
 		return cells
 	
-#	_draw: ->
-	draw: ->
-		print "GridModule.draw()"
-		for c, i in @data
-			cX = (i % @row) * (@cellW + @marginX)
-			cY = Math.floor(i / @row) * (@cellH + @marginY)
-			@drawBehavior(c, cX, cY)
-		@updateContentSize()
-	
-#	draw: Utils.throttle 0.1, @_draw, {testScope: this}
-	
-	defaultDrawBehavior: (c, x, y) ->
+	defaultDrawBehavior: (c, x, y, i) ->
+		print "DrawBehavior("+arguments.toString()+")"
 		c.superLayer = @content
 		c.x = x
 		c.y = y
-	
-#	updateContentSize = Utils.throttle .1, @_updateContentSize
-	
+		
+#	draw: Utils.throttle 0.1, _draw, {testScope: this}
+#	_draw: ->
+	draw: ->
+#		print "GridModule.draw()"
+#		print "ref:  "+@ref
+#		print "this: "+this
+		for c, i in @data
+			cX = (i % @row) * (@cellW + @marginX)
+			cY = Math.floor(i / @row) * (@cellH + @marginY)
+			@drawBehavior(c, cX, cY, i)
+		@updateContentSize()
+		
+#	updateContentSize = Utils.throttle .1, _updateContentSize
 #	_updateContentSize: ->
 	updateContentSize: ->
-		print "GridModule.updateContentSize()"
+#		print "GridModule.updateContentSize()"
 		@content.height = @content.contentFrame().height

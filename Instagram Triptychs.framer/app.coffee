@@ -1,86 +1,85 @@
-GridModule = require "GridModule"
-
-Framer.Defaults.Layer.backgroundColor = "white"
-
-BG = new Layer
-	width: Screen.width
-	height: Screen.height
+Framer.Device.deviceType = "iphone-6-spacegray"
+Framer.Defaults.Layer.backgroundColor = null
+bg = new BackgroundLayer backgroundColor: "white"
 
 sketch = Framer.Importer.load "imported/Instagram Triptychs"
 
-# sketch.TopNav.visible = false
-# sketch.BotNav.visible = false
+GridModule = require "GridModule"
+InstaImage = require "InstaImage"
+imageCount = 0
+groupCount = 0
 
+##########
+# SCROLL #
+##########
 Page = ScrollComponent.wrap(sketch.Page)
 Page.scrollHorizontal = false
 Page.height = Screen.height - sketch.TopNav.height - sketch.BotNav.height
 Page.on Events.Move, ->
 	b.ignoreEvents = true for b in Adds
-	
 Page.on Events.ScrollAnimationDidEnd, ->
-		b.ignoreEvents = false for b in Adds
+	b.ignoreEvents = false for b in Adds
 
+########
+# PAGE #
+########
 Profile = sketch.Profile
-# Profile.visible = false
-
 Grid = new GridModule
 	row: 3
 	cellW: 248
 	margin: 3
 	width: Screen.width
-	drawBehavior: (c,x,y) ->
+	drawBehavior: (c,x,y,i) ->
 		c.superLayer = @content
+		c.setPosition(i)
 		c.animate
 			properties:
 				x: x
 				y: y
-			time: .5
+			time: .25
 Grid.superLayer = Page.content
 Grid.y = Profile.height
 
 Grid.content.on "change:height", ->
 	Page.updateContent()
 
-single_arr = [sketch.Thumbnail]
-diptych_arr = [sketch.Diptych2, sketch.Diptych1]
-triptych_arr = [sketch.Triptych3, sketch.Triptych2, sketch.Triptych1]
-photos_arr = [single_arr, diptych_arr, triptych_arr]
+addImages = (count, group) ->
+	for i in [0...count]
+		img = new InstaImage
+			imageID: imageCount++
+			groupID: group
+		img.on Events.AnimationEnd, ->
+			Grid.updateContentSize()
+		img.on Events.MouseDown, ->
+			@selected = true
+			# TODO: Change state
+		Grid.insert(img, 0)
 
-# Test cells
-for [0..31]
-	layer = new Layer
-	layer.width = 248
-	layer.height = 248
-	layer.backgroundColor= Utils.randomColor()
-	Grid.add(layer)
-	layer.on Events.AnimationEnd, ->
-		Grid.updateContentSize()
-	
-for arr, a in photos_arr
-	b = sketch["Add"+(a+1)]
-	b.photos = photos_arr[a]
-	b.on Events.Click, (event, layer) ->
-		for cell, i in @photos
-			cell = cell.copy()
-			cell.superLayer = Grid.content
-			cell.x = (i+1) * -(Grid.cellW + Grid.marginX)
-			cell.y = 0
-			Grid.insert(cell, 0)
-			cell.on Events.AnimationEnd, ->
-				Grid.updateContentSize()
+addImages(17)
 
-# Button 1
+###########
+# BUTTONS #
+###########
 Add1 = sketch.Add1
-# Button 2
+Add1.on Events.Click, (event, layer) ->
+	addImages(1)
+
 Add2 = sketch.Add2
 Add2Back = sketch.Add2Back
-# Button 3
+Add2.on Events.Click, (event, layer) ->
+	addImages(2, groupCount++)
+
 Add3 = sketch.Add3
 Add3Mid = sketch.Add3Mid
 Add3Back = sketch.Add3Back
+Add3.on Events.Click, (event, layer) ->
+	addImages(3, groupCount++)
+
 Adds = [Add1, Add2, Add3]
 
-# Init Button Layout
+##########
+# LAYOUT #
+##########
 Add1.x = Add2.x = Add3.x = 339
 Add1.y = Add2.y = Add3.y =1260
 Add1.opacity = Add2.opacity = Add3.opacity = 0
