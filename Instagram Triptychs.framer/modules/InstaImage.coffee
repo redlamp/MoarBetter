@@ -36,7 +36,31 @@ class module.exports extends Layer
 		@height = initH ?= @width
 		@clip = opt.clip ?= false
 		@backgroundColor = opt.backgroundColor
+	
+	setImage: (val) ->
+		@imageID = val ?= @imageID
+		@imageVal.html = @imageID + 1
+		@imageVal.style = imageValueStyle
 		
+	setPosition: (val) ->
+		@pos = val ?= @pos
+		@positionVal.html = @pos + 1
+		@positionVal.style = imageValueStyle
+		
+	setGroup: (val) ->
+		@groupID = val ?= @groupID ?= -1
+		if @groupID >= 0
+			@groupVal.html = @groupID + 1
+			@groupVal.style = imageValueStyle
+			@groupLabel.html = "GROUP"
+			@groupVal.opacity = @groupLabel.opacity = 1
+			@bg.backgroundColor = "#D0021B"
+			@bg.hueRotate = @groupID * 66
+		else
+			@groupVal.html = ""
+			@groupLabel.html = "NO GROUP"
+			@groupVal.opacity = @groupLabel.opacity = .5
+	
 	configDisplay: ->
 		@bg = new Layer
 			superLayer: this
@@ -94,27 +118,15 @@ class module.exports extends Layer
 			width: 86
 			html: ""
 			style: imageValueStyle
-
-	setImage: (val) ->
-		@imageID = val ?= @imageID
-		@imageVal.html = @imageID + 1
-		@imageVal.style = imageValueStyle
 		
-	setPosition: (val) ->
-		@pos = val ?= @pos
-		@positionVal.html = @pos + 1
-		@positionVal.style = imageValueStyle
+		@states.animationOptions =
+			curve: "spring(500, 25, 0)"
 		
-	setGroup: (val) ->
-		@groupID = val ?= @groupID ?= -1
-		if @groupID >= 0
-			@groupVal.html = @groupID + 1
-			@groupVal.style = imageValueStyle
-			@groupLabel.html = "GROUP"
-			@groupVal.opacity = @groupLabel.opacity = 1
-			@bg.backgroundColor = "#D0021B"
-			@bg.hueRotate = @groupID * 66
-		else
-			@groupVal.html = ""
-			@groupLabel.html = "NO GROUP"
-			@groupVal.opacity = @groupLabel.opacity = .5
+		@states.add
+			default:
+				scale: 1
+				opacity: 1
+			selected:
+				scale: .9
+			unselected:
+				grayscale: 100

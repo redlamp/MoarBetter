@@ -1,9 +1,11 @@
 Framer.Device.deviceType = "iphone-6-spacegray"
 Framer.Defaults.Layer.backgroundColor = null
-bg = new BackgroundLayer backgroundColor: "white"
+bg = new BackgroundLayer
+	backgroundColor: "white"
 
 sketch = Framer.Importer.load "imported/Instagram Triptychs"
 
+{Pointer} = require "Pointer"
 GridModule = require "GridModule"
 InstaImage = require "InstaImage"
 imageCount = 0
@@ -42,7 +44,14 @@ Grid.y = Profile.height
 
 Grid.content.on "change:height", ->
 	Page.updateContent()
+	
+focus = sketch.GroupFocus
+focus.superLayer = Grid
+focus.visible = false
 
+##########
+# IMAGES #
+##########
 addImages = (count, group) ->
 	for i in [0...count]
 		img = new InstaImage
@@ -50,13 +59,55 @@ addImages = (count, group) ->
 			groupID: group
 		img.on Events.AnimationEnd, ->
 			Grid.updateContentSize()
-		img.on Events.MouseDown, ->
+		img.on Events.TouchStart, ->
 			@selected = true
-			# TODO: Change state
+			focus.x = @x
+			focus.y = @y
+			focus.visible = true
 		Grid.insert(img, 0)
 
 addImages(17)
 
+#########
+# FOCUS #
+#########
+focusCancel = focus.subLayersByName("Cancel")[0]
+focusAccept = focus.subLayersByName("Accept")[0]
+focusResize = focus.subLayersByName("Resize")[0]
+
+focusCancel.on Events.TouchStart, ->
+	print "Group Cancel Changes"
+	focus.visible = false
+
+focusAccept.on Events.TouchStart, ->
+	print "Group Accept Changes"
+	focus.visible = false
+
+# REMOVE
+testPosition = new Layer
+	superLayer: Grid.content
+	backgroundColor: "magenta"
+
+focusResize.on Events.TouchStart, ->
+	print "Group Resize START"
+	Page.content.draggable = false
+	Grid.content.on Events.TouchMove, resizeMove
+	Grid.content.once Events.TouchEnd, ->
+		print "Group Resize END"
+		Page.content.draggable = true
+		Grid.content.off Events.TouchMove, resizeMove
+		
+resizeMove = (event, layer)->
+# 	print "Group Resize MOVE"
+	print [].slice.call(arguments)
+	x = event.x - focusResize.x - Grid.x
+	y = event.y - focusResize.y - Grid.y
+	testPosition.x = x
+	testPosition.y = y
+	for i in Grid.content.subLayers
+		if (x > i.minX && x < i.maxX && y > i.minY && y < i.maxY)
+			i.states.switch("selected")
+	
 ###########
 # BUTTONS #
 ###########

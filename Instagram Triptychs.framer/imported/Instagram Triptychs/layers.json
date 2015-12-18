@@ -879,109 +879,52 @@
     "children" : [
       {
         "maskFrame" : null,
-        "id" : "A7BB552B-CFC5-4D11-A906-2DE821F2C39D",
+        "id" : "AAC16417-3089-40F4-AFBD-AFA5F20CE44C",
         "visible" : true,
         "children" : [
           {
             "maskFrame" : null,
-            "id" : "AAC16417-3089-40F4-AFBD-AFA5F20CE44C",
+            "id" : "EB62E429-22FF-44EE-9A53-BC38802A787D",
             "visible" : true,
             "children" : [
-              {
-                "maskFrame" : null,
-                "id" : "EB62E429-22FF-44EE-9A53-BC38802A787D",
-                "visible" : true,
-                "children" : [
 
-                ],
-                "image" : {
-                  "path" : "images\/Layer-AcceptSet-EB62E429-22FF-44EE-9A53-BC38802A787D.png",
-                  "frame" : {
-                    "y" : 0,
-                    "x" : 209,
-                    "width" : 40,
-                    "height" : 40
-                  }
-                },
-                "imageType" : "png",
-                "kind" : "group",
-                "metadata" : {
-                  "opacity" : 1
-                },
-                "layerFrame" : {
-                  "y" : 0,
-                  "x" : 209,
-                  "width" : 40,
-                  "height" : 40
-                },
-                "name" : "AcceptSet"
-              },
-              {
-                "maskFrame" : null,
-                "id" : "4A49AA5D-8EA6-49D2-820A-9A339F3AE034",
-                "visible" : true,
-                "children" : [
-
-                ],
-                "image" : {
-                  "path" : "images\/Layer-CancelSet-4A49AA5D-8EA6-49D2-820A-9A339F3AE034.png",
-                  "frame" : {
-                    "y" : 0,
-                    "x" : 0,
-                    "width" : 40,
-                    "height" : 40
-                  }
-                },
-                "imageType" : "png",
-                "kind" : "group",
-                "metadata" : {
-                  "opacity" : 1
-                },
-                "layerFrame" : {
-                  "y" : 0,
-                  "x" : 0,
-                  "width" : 40,
-                  "height" : 40
-                },
-                "name" : "CancelSet"
-              },
-              {
-                "maskFrame" : null,
-                "id" : "29C7B433-238D-4E2B-8F8D-15F68471A305",
-                "visible" : true,
-                "children" : [
-
-                ],
-                "image" : {
-                  "path" : "images\/Layer-Resize-29C7B433-238D-4E2B-8F8D-15F68471A305.png",
-                  "frame" : {
-                    "y" : 209,
-                    "x" : 209,
-                    "width" : 40,
-                    "height" : 40
-                  }
-                },
-                "imageType" : "png",
-                "kind" : "group",
-                "metadata" : {
-                  "opacity" : 1
-                },
-                "layerFrame" : {
-                  "y" : 209,
-                  "x" : 209,
-                  "width" : 40,
-                  "height" : 40
-                },
-                "name" : "Resize"
-              }
             ],
             "image" : {
-              "path" : "images\/Layer-SetHighlight-AAC16417-3089-40F4-AFBD-AFA5F20CE44C.png",
+              "path" : "images\/Layer-Accept-EB62E429-22FF-44EE-9A53-BC38802A787D.png",
+              "frame" : {
+                "y" : 0,
+                "x" : 208,
+                "width" : 40,
+                "height" : 40
+              }
+            },
+            "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
+            "layerFrame" : {
+              "y" : 0,
+              "x" : 208,
+              "width" : 40,
+              "height" : 40
+            },
+            "name" : "Accept"
+          },
+          {
+            "maskFrame" : null,
+            "id" : "4A49AA5D-8EA6-49D2-820A-9A339F3AE034",
+            "visible" : true,
+            "children" : [
+
+            ],
+            "image" : {
+              "path" : "images\/Layer-Cancel-4A49AA5D-8EA6-49D2-820A-9A339F3AE034.png",
               "frame" : {
                 "y" : 0,
                 "x" : 0,
-                "width" : 249,
-                "height" : 249
+                "width" : 40,
+                "height" : 40
               }
             },
             "imageType" : "png",
@@ -992,11 +935,68 @@
             "layerFrame" : {
               "y" : 0,
               "x" : 0,
-              "width" : 249,
-              "height" : 249
+              "width" : 40,
+              "height" : 40
             },
-            "name" : "SetHighlight"
+            "name" : "Cancel"
           },
+          {
+            "maskFrame" : null,
+            "id" : "29C7B433-238D-4E2B-8F8D-15F68471A305",
+            "visible" : true,
+            "children" : [
+
+            ],
+            "image" : {
+              "path" : "images\/Layer-Resize-29C7B433-238D-4E2B-8F8D-15F68471A305.png",
+              "frame" : {
+                "y" : 208,
+                "x" : 208,
+                "width" : 40,
+                "height" : 40
+              }
+            },
+            "imageType" : "png",
+            "kind" : "group",
+            "metadata" : {
+              "opacity" : 1
+            },
+            "layerFrame" : {
+              "y" : 208,
+              "x" : 208,
+              "width" : 40,
+              "height" : 40
+            },
+            "name" : "Resize"
+          }
+        ],
+        "image" : {
+          "path" : "images\/Layer-GroupFocus-AAC16417-3089-40F4-AFBD-AFA5F20CE44C.png",
+          "frame" : {
+            "y" : 0,
+            "x" : 0,
+            "width" : 248,
+            "height" : 248
+          }
+        },
+        "imageType" : "png",
+        "kind" : "group",
+        "metadata" : {
+          "opacity" : 1
+        },
+        "layerFrame" : {
+          "y" : 0,
+          "x" : 0,
+          "width" : 248,
+          "height" : 248
+        },
+        "name" : "GroupFocus"
+      },
+      {
+        "maskFrame" : null,
+        "id" : "A7BB552B-CFC5-4D11-A906-2DE821F2C39D",
+        "visible" : true,
+        "children" : [
           {
             "maskFrame" : null,
             "id" : "D79D6EBF-1368-4BE3-9200-E6FFF6A17DB2",
@@ -1093,8 +1093,8 @@
         "layerFrame" : {
           "y" : 0,
           "x" : 0,
-          "width" : 249,
-          "height" : 249
+          "width" : 248,
+          "height" : 248
         },
         "name" : "Image"
       },

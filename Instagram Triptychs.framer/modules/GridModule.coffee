@@ -33,10 +33,11 @@ class module.exports extends Layer
 				@superLayer.height = @height
 		
 		@drawBehavior = opt.drawBehavior ?= @defaultDrawBehavior
-		
-#		@destroyRemaining	= opt.destoryRemaining ? opt.destroyRemaining : true
 
 		@draw()
+		
+	getData: ->
+		return @data[..]
 	
 	add: (cell) ->
 		return @insert([cell], @data.length)
@@ -56,7 +57,6 @@ class module.exports extends Layer
 		return cells
 	
 	defaultDrawBehavior: (c, x, y, i) ->
-		print "DrawBehavior("+arguments.toString()+")"
 		c.superLayer = @content
 		c.x = x
 		c.y = y
