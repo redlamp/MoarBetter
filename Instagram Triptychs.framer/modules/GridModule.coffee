@@ -64,7 +64,7 @@ class module.exports extends Layer
 #	draw: Utils.throttle 0.1, _draw, {testScope: this}
 #	_draw: ->
 	draw: ->
-#		print "GridModule.draw()"
+		print "GridModule.draw()"
 #		print "ref:  "+@ref
 #		print "this: "+this
 		for c, i in @data

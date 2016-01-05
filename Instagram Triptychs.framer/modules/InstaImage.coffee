@@ -127,6 +127,8 @@ class module.exports extends Layer
 				scale: 1
 				opacity: 1
 			selected:
+				scale: 1
+			deselected:
 				scale: .9
 			unselected:
 				grayscale: 100
