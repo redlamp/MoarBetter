@@ -60,6 +60,7 @@ class module.exports extends Layer
 			@groupVal.html = ""
 			@groupLabel.html = "NO GROUP"
 			@groupVal.opacity = @groupLabel.opacity = .5
+			@bg.backgroundColor = "#D8D8D8"
 	
 	configDisplay: ->
 		@bg = new Layer

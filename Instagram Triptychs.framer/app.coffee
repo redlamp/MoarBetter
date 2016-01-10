@@ -6,15 +6,18 @@ Framer.Defaults.Layer.backgroundColor = null
 bg = new BackgroundLayer
 	backgroundColor: "white"
 
-sketch = Framer.Importer.load "imported/Instagram Triptychs"
-
 {Pointer} = require "Pointer"
 GridModule = require "GridModule"
 InstaImage = require "InstaImage"
 imageCount = 0
 groupCount = 0
+groups = []
+activeGroup = 0
 selectedStart = null
 selectedEnd = null
+selectedMin = null
+selectedMax = null
+selectedLength = null
 
 ##########
 # SCROLL #
@@ -57,9 +60,9 @@ GridMoveTracking = new Layer
 	height: Grid.height
 	visible:  false
 	
-focus = sketch.GroupFocus
-focus.superLayer = Grid
-focus.visible = false
+# focus = sketch.GroupFocus
+# focus.superLayer = Grid
+# focus.visible = false
 
 ##########
 # IMAGES #
@@ -72,95 +75,96 @@ addImages = (count, group) ->
 		img.on Events.AnimationEnd, ->
 			Grid.updateContentSize()
 		img.on Events.TouchStart, ->
-			@selected = true
-			focus.x = @x
-			focus.y = @y
-			focus.visible = true
-			selectedStart = @pos
+			@on Events.TouchStart, groupStart
 			print "selectedStart: "+selectedStart
 		Grid.insert(img, 0)
 
 addImages(17)
 
-#########
-# FOCUS #
-#########
-focusCancel = focus.subLayersByName("Cancel")[0]
-focusAccept = focus.subLayersByName("Accept")[0]
-focusResize = focus.subLayersByName("Resize")[0]
-focusSpan = new Layer
-	superLayer: focus
-	width: focus.width
-	height: focus.height
-# 	backgroundColor: "magenta"
-	borderWidth: 8
-	borderColor: "#4A90E2"
-
-focusCancel.on Events.TouchStart, ->
-	print "Group Cancel Changes"
-	focus.visible = false
-
-focusAccept.on Events.TouchStart, ->
-	print "Group Accept Changes"
-	focus.visible = false
-
-# REMOVE
-# testPosition = new Layer
-# 	superLayer: Grid
-# 	backgroundColor: "magenta"
-# 	visible: false
-
-focusResize.on Events.TouchStart, ->
+groupStart = (event, layer) ->
 	print "Group Resize START"
 	Page.content.draggable = false
+	
+	@selected = true
+	selectedStart = @pos
+	
+	activeGroup = if layer.groupID >= 0 then layer.groupID else groupCount++
+	layer.groupID = activeGroup
 
 	GridMoveTracking.visible = true
 	GridMoveTracking.width = Grid.width
 	GridMoveTracking.height = Grid.height
 	GridMoveTracking.on Events.TouchMove, resizeMove
-	
-# 	testPosition.visible = true
-# 	testPosition.midX = focusResize.midX
-# 	testPosition.midY = focusResize.midY
 
-	Grid.once Events.TouchEnd, ->
-		print "Group Resize END"
-		Page.content.draggable = true
-		GridMoveTracking.visible = false
-		GridMoveTracking.off Events.TouchMove, resizeMove
-# 		testPosition.visible = false
-# 		testPosition.midX = focusResize.midX
-# 		testPosition.midY = focusResize.midY
-		for i in Grid.content.subLayers
-			i.states.switch("default")
-		
-resizeMove = (event, layer)->
-# 	print "Group Resize MOVE"
-# 	x =	event.x
-# 	y = event.y
+	Grid.once Events.TouchEnd, groupEnd
+	
+# 	focus.x = @x
+# 	focus.y = @y
+# 	focus.visible = true
+	
+resizeMove = (event, layer) ->
 	p = Pointer.offset(event, this)
 	x = p.x
 	y = p.y
-# 	testPosition.midX = x
-# 	testPosition.midY = y
+	
+	groups[activeGroup] = []
+
 	for i in Grid.content.subLayers
 		if (x > i.minX && x < i.maxX && y > i.minY && y < i.maxY)
 			selectedEnd = i.pos
-		if(i.pos >= Math.min(selectedStart, selectedEnd) && i.pos <= Math.max(selectedStart, selectedEnd))
-			i.states.switch("selected")
-		else
-			i.states.switch("deselected") 
-
-	first = Grid.data[Math.min(selectedStart, selectedEnd)]
-	last = Grid.data[Math.max(selectedStart, selectedEnd)]
 			
-	focusSpan.width = last.x + last.width - first.x
-	focusSpan.height = last.y + last.height - first.y
+			selectedMin = Math.min(selectedStart, selectedEnd)
+			selectedMax = Math.max(selectedStart, selectedEnd)
+			selectedLength = selectedMax - selectedMin
+		
+		if(i.pos >= selectedMin && i.pos <= selectedMax && (i.groupID < 0 || i.groupID == activeGroup))
+			i.states.switch("selected")
+			i.setGroup(activeGroup)
+			groups[activeGroup].push(i)
+		else
+			i.states.switch("deselected")
+			if i.groupID == activeGroup
+				i.setGroup(-1)
+			
+groupEnd = (event, layer) ->
+	print "Group Resize END"
+	Page.content.draggable = true
+	GridMoveTracking.visible = false
+	GridMoveTracking.off Events.TouchMove, resizeMove
+	for i in Grid.content.subLayers
+		i.states.switch("default")
 
-	focusCancel.x = first.x
-
-	focusAccept.x = focusResize.x = last.x + Grid.cellW - focusResize.width
-	focusResize.y = last.y + Grid.cellH - focusResize.height
+#########
+# FOCUS #
+#########
+# focusCancel = focus.subLayersByName("Cancel")[0]
+# focusAccept = focus.subLayersByName("Accept")[0]
+# focusResize = focus.subLayersByName("Resize")[0]
+# focusSpan = new Layer
+# 	superLayer: focus
+# 	width: focus.width
+# 	height: focus.height
+# 	borderWidth: 8
+# 	borderColor: "#4A90E2"
+# 
+# focusCancel.on Events.TouchStart, ->
+# 	print "Group Cancel Changes"
+# 	focus.visible = false
+# 
+# focusAccept.on Events.TouchStart, ->
+# 	print "Group Accept Changes"
+# 	focus.visible = false
+# 
+# focusResize.on Events.TouchStart, groupStart
+#
+# 	focus.x = first.x
+# 	focus.y = first.y
+# 	
+# 	focusSpan.width = last.x + last.width - first.x
+# 	focusSpan.height = last.y + last.height - first.y
+# 
+# 	focusAccept.x = focusResize.x = last.x + Grid.cellW - focusResize.width
+# 	focusResize.y = last.y + Grid.cellH - focusResize.height
 	
 ###########
 # BUTTONS #
