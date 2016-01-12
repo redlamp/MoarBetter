@@ -9,15 +9,21 @@ bg = new BackgroundLayer
 {Pointer} = require "Pointer"
 GridModule = require "GridModule"
 InstaImage = require "InstaImage"
+
 imageCount = 0
-groupCount = 0
 groups = []
+groupCount = 0
 activeGroup = 0
+
 selectedStart = null
 selectedEnd = null
+selectedEndSnap = null
 selectedMin = null
 selectedMax = null
 selectedLength = null
+
+touchHold = 0
+touchCount = 0
 
 ##########
 # SCROLL #
@@ -50,9 +56,67 @@ Grid = new GridModule
 Grid.superLayer = Page.content
 Grid.y = Profile.height
 
+########
+# GRID #
+########
+Grid.organizedData = []
+# Custom Draw
+Grid.draw = ->
+	@organizedData = @data
+	@handledGroups = []
+	
+	for c, i in @organizedData
+		if groups[c.groupID] && c.groupID != -1 && @handledGroups[c.groupID] != true
+			print "handle group " + c.groupID
+			@handledGroups[c.groupID] = true
+			gID = c.groupID
+			gRow = Math.floor(c.pos / @row)
+			gIndex = c.pos % @row
+# 			print "FUCK: "+(item.name for item in groups[gID])
+			gSpan = groups[gID].length
+			# spread across more rows than it should be
+			if Math.ceil((gIndex + gSpan) / @row) > Math.ceil(gSpan / @row)
+# 				print "group: "+c.groupID+" row: "+gRow+" index: "+gIndex+" span: "+gSpan
+				validLeft = true
+				checkLeft = (gIndex + gSpan) % @row
+				checkMax = c.pos-1
+				checkMin = checkMax-checkLeft+1
+# 				print "check left: "+checkLeft+ " min: "+checkMin + " max: "+checkMax
+				for left in [checkMax...checkMin]
+					img = @organizedData[left]
+					# img belongs to a group, must move down, right
+					if img.groupID != -1
+						validLeft = false
+						break
+						
+				if validLeft
+# 					print gID+" Move left, up"
+					arrB = @organizedData.splice(c.pos,gSpan)
+					arrA = @organizedData.splice(checkMin, checkMax-checkMin)
+					insertArrayAt(@organizedData, checkMin, arrB)
+					insertArrayAt(@organizedData, checkMin+gSpan, arrA)
+# 					print "ArrA: "+(item.name for item in arrA)
+# 					print "ArrB: "+(item.name for item in arrB)
+# 					print "ARRR: "+(item.imageID for item in @organizedData)
+				else
+					print gID+" Move right, down"
+			print "ARRR: "+(item.imageID for item in @organizedData)
+			# skip group
+			i += gSpan-1
+	
+	for c, i in @organizedData
+		cX = (i % @row) * (@cellW + @marginX)
+		cY = Math.floor(i / @row) * (@cellH + @marginY)
+		@drawBehavior(c, cX, cY, i)
+
+	@updateContentSize()
+
+insertArrayAt = (array, index, arrayToInsert) ->
+    Array.prototype.splice.apply(array, [index, 0].concat(arrayToInsert));
+
 Grid.content.on "change:height", ->
 	Page.updateContent()
-	
+
 GridMoveTracking = new Layer
 	name: "GridMoveTracking"
 	superLayer: Grid
@@ -68,25 +132,30 @@ GridMoveTracking = new Layer
 # IMAGES #
 ##########
 addImages = (count, group) ->
-	for i in [0...count]
+	if group
+		groups[group] = []
+	[0...count].forEach ->
 		img = new InstaImage
 			imageID: imageCount++
 			groupID: group
+		if group
+			groups[group].push(img)
 		img.on Events.AnimationEnd, ->
 			Grid.updateContentSize()
-		img.on Events.TouchStart, ->
-			@on Events.TouchStart, groupStart
-			print "selectedStart: "+selectedStart
+		img.on Events.TouchStart, (event, layer) ->
+			touchHold = 1
+			Utils.delay 1, =>
+				if touchHold == 1
+					groupStart(null, img)
 		Grid.insert(img, 0)
 
 addImages(17)
 
 groupStart = (event, layer) ->
-	print "Group Resize START"
+# 	print "groupStart("+[event, layer.name]+")"
 	Page.content.draggable = false
-	
-	@selected = true
-	selectedStart = @pos
+		
+	selectedStart = layer.pos
 	
 	activeGroup = if layer.groupID >= 0 then layer.groupID else groupCount++
 	layer.groupID = activeGroup
@@ -95,14 +164,14 @@ groupStart = (event, layer) ->
 	GridMoveTracking.width = Grid.width
 	GridMoveTracking.height = Grid.height
 	GridMoveTracking.on Events.TouchMove, resizeMove
-
-	Grid.once Events.TouchEnd, groupEnd
+	GridMoveTracking.once Events.TouchEnd, groupEnd
 	
 # 	focus.x = @x
 # 	focus.y = @y
 # 	focus.visible = true
 	
 resizeMove = (event, layer) ->
+# 	print "resizeMove("+[event, layer.name]+")"
 	p = Pointer.offset(event, this)
 	x = p.x
 	y = p.y
@@ -111,12 +180,8 @@ resizeMove = (event, layer) ->
 
 	for i in Grid.content.subLayers
 		if (x > i.minX && x < i.maxX && y > i.minY && y < i.maxY)
-			selectedEnd = i.pos
+			snapSelected(i.pos)
 			
-			selectedMin = Math.min(selectedStart, selectedEnd)
-			selectedMax = Math.max(selectedStart, selectedEnd)
-			selectedLength = selectedMax - selectedMin
-		
 		if(i.pos >= selectedMin && i.pos <= selectedMax && (i.groupID < 0 || i.groupID == activeGroup))
 			i.states.switch("selected")
 			i.setGroup(activeGroup)
@@ -125,14 +190,42 @@ resizeMove = (event, layer) ->
 			i.states.switch("deselected")
 			if i.groupID == activeGroup
 				i.setGroup(-1)
-			
+
+snapSizes = [1,2,3,6,9,12,15]
+snapSelected = (end, snap = 0)->
+	selectedEnd = end
+	selectedMin = Math.min(selectedStart, selectedEnd)
+	selectedMax = Math.max(selectedStart, selectedEnd)
+	selectedLength = selectedMax - selectedMin + 1
+
+# 	len = selectedLength+1	
+# 	for size, i in snapSizes
+# 		if (len == snapSizes[i])
+# 			break
+# 		if (len > snapSizes[i] && len < snapSizes[i+1])
+# 			print "updated snap "+end+" to "+(end + (snapSizes[i+1] - snapSizes[snap]))
+# 			end += (snapSizes[i+1] - snapSizes[snap])
+# 			snapSelected(end)
+# 			break
+
 groupEnd = (event, layer) ->
-	print "Group Resize END"
+# 	print "groupEnd("+[event, layer.name]+")"
 	Page.content.draggable = true
 	GridMoveTracking.visible = false
 	GridMoveTracking.off Events.TouchMove, resizeMove
+
 	for i in Grid.content.subLayers
 		i.states.switch("default")
+		
+	if selectedLength < 2
+		img = Grid.data[selectedStart]
+		# If new group ends up not being used, remove it from the tally
+		if img.groupID == activeGroup && groupCount == activeGroup + 1
+			groupCount--
+			activeGroup--
+		img.setGroup(-1)
+		
+	Grid.draw()
 
 #########
 # FOCUS #

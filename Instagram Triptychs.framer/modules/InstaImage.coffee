@@ -39,7 +39,7 @@ class module.exports extends Layer
 	
 	setImage: (val) ->
 		@imageID = val ?= @imageID
-		@imageVal.html = @imageID + 1
+		@imageVal.html = @imageID# + 1
 		@imageVal.style = imageValueStyle
 		
 	setPosition: (val) ->
@@ -55,7 +55,7 @@ class module.exports extends Layer
 			@groupLabel.html = "GROUP"
 			@groupVal.opacity = @groupLabel.opacity = 1
 			@bg.backgroundColor = "#D0021B"
-			@bg.hueRotate = @groupID * 66
+			@bg.hueRotate = @groupID * 63
 		else
 			@groupVal.html = ""
 			@groupLabel.html = "NO GROUP"
