@@ -30,7 +30,7 @@ class module.exports extends Layer
 		@setPosition(opt.pos ?= -1)
 		@setGroup(opt.groupID ? -1)
 		
-		@name = opt.name ?= "InstaImage_"+@imageID
+		@name = opt.name ?= "img_"+@imageID
 	
 		@width = initW ?= 248
 		@height = initH ?= @width

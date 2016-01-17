@@ -56,6 +56,11 @@ Grid = new GridModule
 Grid.superLayer = Page.content
 Grid.y = Profile.height
 
+# TODO: REMOVE
+Profile.visible = false
+Grid.y = 0
+Page.content.draggable = false
+
 ########
 # GRID #
 ########
@@ -65,45 +70,55 @@ Grid.draw = ->
 # 	@organizedData = @data
 	@handledGroups = []
 	
-	for c, i in @data
-		if groups[c.groupID] && c.groupID != -1 && @handledGroups[c.groupID] != true
-# 			print "handle group " + c.groupID
-			@handledGroups[c.groupID] = true
-			gID = c.groupID
-			gRow = Math.floor(c.pos / @row)
-			gIndex = c.pos % @row
-			gSpan = groups[gID].length
-			# spread across more rows than it should be
-			if Math.ceil((gIndex + gSpan) / @row) > Math.ceil(gSpan / @row)
-# 				print "group: "+c.groupID+" row: "+gRow+" index: "+gIndex+" span: "+gSpan
-				validLeft = true
-				checkLeft = (gIndex + gSpan) % @row
-				checkMax = c.pos-1
-				checkMin = checkMax-checkLeft+1
-# 				print "check left: "+checkLeft+ " min: "+checkMin + " max: "+checkMax
-				for left in [checkMax..checkMin]
-					img = @data[left]
-					# img belongs to a group, must move down, right
-					if img.groupID != -1
-						validLeft = false
-						break
-						
-				if validLeft
-					print gID+" Move left, up"
-					swapSpans(@data, c.pos, gSpan, checkMin, checkMax-checkMin)
-				else
-					print gID+" Move right, down"
-					
-# 			print "ARRR: "+(item.imageID for item in @data)
-			# skip group
-			i += gSpan-1
+	for cell in @data
+		cell.used = 0
 	
+	for cell, index in @data
+		gID = cell.groupID
+		if gID > -1 and not @handledGroups[gID]
+			gRow = Math.floor(index / @row)
+			gCol = index % @row
+			gSpan = groups[gID].length
+			for gItem in @data[index...index+gSpan]
+				gItem.used++
+			@handledGroups[gID] = true
+			# group is unaligned
+			if Math.ceil((gCol + gSpan) / @row) > Math.ceil(gSpan / @row)
+
+				# look left
+				shuffle = []
+				shuffleRequired = if gSpan > 2 then gCol else 1
+				shuffle.push(i) for c, i in @data[0...index] by -1 when shuffle.length < shuffleRequired and c.used == 0
+				if shuffle.length == shuffleRequired
+# 					print "LEFT"
+					shuffler(@data, shuffle)
+					insert = index+gSpan-shuffle.length
+					@data[insert...insert] = shuffle
+				else 
+# 					print "RIGHT"
+					shuffle = []
+					shuffleRequired = @row - gCol
+					shuffleRight = (c, i) ->
+						shuffle.push(index+gSpan+i)
+						c.used++
+					shuffleRight(c, i) for c, i in @data[index+gSpan..] when shuffle.length < shuffleRequired
+					shuffler(@data, shuffle)
+					@data[index...index] = shuffle
+# 				print "group: "+gID+" index: "+index+" gRow: "+gRow+" gCol: "+gCol+" gSpan: "+gSpan+" shuffleRequired: "+ shuffleRequired
+			
 	for c, i in @data
 		cX = (i % @row) * (@cellW + @marginX)
 		cY = Math.floor(i / @row) * (@cellH + @marginY)
 		@drawBehavior(c, cX, cY, i)
+# 		c.groupLabel.html = if c.used>0 then "USED" else "not used"
 
 	@updateContentSize()
+
+shuffler = (source, shuffle) -> 
+	for shuffleItem, shuffleIndex in shuffle
+		shuffle[shuffleIndex] = source[shuffleItem]
+		source[shuffleItem..shuffleItem] = []
+# 		print "shuffle: "+(i.name for i in shuffle)
 
 Grid.content.on "change:height", ->
 	Page.updateContent()
