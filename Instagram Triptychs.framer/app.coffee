@@ -62,17 +62,16 @@ Grid.y = Profile.height
 Grid.organizedData = []
 # Custom Draw
 Grid.draw = ->
-	@organizedData = @data
+# 	@organizedData = @data
 	@handledGroups = []
 	
-	for c, i in @organizedData
+	for c, i in @data
 		if groups[c.groupID] && c.groupID != -1 && @handledGroups[c.groupID] != true
-			print "handle group " + c.groupID
+# 			print "handle group " + c.groupID
 			@handledGroups[c.groupID] = true
 			gID = c.groupID
 			gRow = Math.floor(c.pos / @row)
 			gIndex = c.pos % @row
-# 			print "FUCK: "+(item.name for item in groups[gID])
 			gSpan = groups[gID].length
 			# spread across more rows than it should be
 			if Math.ceil((gIndex + gSpan) / @row) > Math.ceil(gSpan / @row)
@@ -82,37 +81,29 @@ Grid.draw = ->
 				checkMax = c.pos-1
 				checkMin = checkMax-checkLeft+1
 # 				print "check left: "+checkLeft+ " min: "+checkMin + " max: "+checkMax
-				for left in [checkMax...checkMin]
-					img = @organizedData[left]
+				for left in [checkMax..checkMin]
+					img = @data[left]
 					# img belongs to a group, must move down, right
 					if img.groupID != -1
 						validLeft = false
 						break
 						
 				if validLeft
-# 					print gID+" Move left, up"
-					arrB = @organizedData.splice(c.pos,gSpan)
-					arrA = @organizedData.splice(checkMin, checkMax-checkMin)
-					insertArrayAt(@organizedData, checkMin, arrB)
-					insertArrayAt(@organizedData, checkMin+gSpan, arrA)
-# 					print "ArrA: "+(item.name for item in arrA)
-# 					print "ArrB: "+(item.name for item in arrB)
-# 					print "ARRR: "+(item.imageID for item in @organizedData)
+					print gID+" Move left, up"
+					swapSpans(@data, c.pos, gSpan, checkMin, checkMax-checkMin)
 				else
 					print gID+" Move right, down"
-			print "ARRR: "+(item.imageID for item in @organizedData)
+					
+# 			print "ARRR: "+(item.imageID for item in @data)
 			# skip group
 			i += gSpan-1
 	
-	for c, i in @organizedData
+	for c, i in @data
 		cX = (i % @row) * (@cellW + @marginX)
 		cY = Math.floor(i / @row) * (@cellH + @marginY)
 		@drawBehavior(c, cX, cY, i)
 
 	@updateContentSize()
-
-insertArrayAt = (array, index, arrayToInsert) ->
-    Array.prototype.splice.apply(array, [index, 0].concat(arrayToInsert));
 
 Grid.content.on "change:height", ->
 	Page.updateContent()
@@ -148,6 +139,7 @@ addImages = (count, group) ->
 				if touchHold == 1
 					groupStart(null, img)
 		Grid.insert(img, 0)
+	Grid.draw()
 
 addImages(17)
 
@@ -304,4 +296,23 @@ Add3.on Events.AnimationEnd, (ani, layer) ->
 Add1.animate(properties: {x: 256, y: 1240, opacity: 1}, time: .5, delay: .0);
 Add2.animate(properties: {x: 339, y: 1200, opacity: 1}, time: .5, delay: .1);
 Add3.animate(properties: {x: 420, y: 1240, opacity: 1}, time: .5, delay: .2);
+
+#############
+# FUNCTIONS #
+#############
+swapSpans = (array, aStart = 0 , aSpan = 0 , bStart = 0, bSpan = 0) ->
+	arrA = array[aStart...aStart+aSpan]
+	arrB = array[bStart...bStart+bSpan]
+	if aStart < bStart
+		if aStart + aSpan > bStart
+			print "* Span A collides with Span B *"
+			return
+		array[bStart...bStart+bSpan] = arrA
+		array[aStart...aStart+aSpan] = arrB
+	else
+		if bStart + bSpan > aStart
+			print "* Span B collides with Span A *"
+			return
+		array[aStart...aStart+aSpan] = arrB
+		array[bStart...bStart+bSpan] = arrA
 
