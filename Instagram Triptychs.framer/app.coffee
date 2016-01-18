@@ -21,6 +21,7 @@ selectedEndSnap = null
 selectedMin = null
 selectedMax = null
 selectedLength = null
+selectedDirection = 1
 
 touchHold = 0
 touchCount = 0
@@ -57,9 +58,9 @@ Grid.superLayer = Page.content
 Grid.y = Profile.height
 
 # TODO: REMOVE
-Profile.visible = false
-Grid.y = 0
-Page.content.draggable = false
+# Profile.visible = false
+# Grid.y = 0
+# Page.content.draggable = false
 
 ########
 # GRID #
@@ -85,7 +86,7 @@ Grid.draw = ->
 			# group is unaligned
 			if Math.ceil((gCol + gSpan) / @row) > Math.ceil(gSpan / @row)
 
-				# look left
+				# check left
 				shuffle = []
 				shuffleRequired = if gSpan > 2 then gCol else 1
 				shuffle.push(i) for c, i in @data[0...index] by -1 when shuffle.length < shuffleRequired and c.used == 0
@@ -149,10 +150,9 @@ addImages = (count, group) ->
 		img.on Events.AnimationEnd, ->
 			Grid.updateContentSize()
 		img.on Events.TouchStart, (event, layer) ->
-			touchHold = 1
-			Utils.delay 1, =>
-				if touchHold == 1
-					groupStart(null, img)
+			@timer = timeout 500, => groupStart(event, img)
+		img.on Events.TouchEnd, -> clearTimeout @timer
+		img.on Events.TouchMove, -> clearTimeout @timer
 		Grid.insert(img, 0)
 	Grid.draw()
 
@@ -160,6 +160,7 @@ addImages(17)
 
 groupStart = (event, layer) ->
 # 	print "groupStart("+[event, layer.name]+")"
+# 	print layer.name+": "+event.x+" "+event.y
 	Page.content.draggable = false
 		
 	selectedStart = layer.pos
@@ -170,6 +171,7 @@ groupStart = (event, layer) ->
 	GridMoveTracking.visible = true
 	GridMoveTracking.width = Grid.width
 	GridMoveTracking.height = Grid.height
+# 	resizeMove(event, GridMoveTracking)
 	GridMoveTracking.on Events.TouchMove, resizeMove
 	GridMoveTracking.once Events.TouchEnd, groupEnd
 	
@@ -179,6 +181,7 @@ groupStart = (event, layer) ->
 	
 resizeMove = (event, layer) ->
 # 	print "resizeMove("+[event, layer.name]+")"
+# 	print layer.name+": "+event.x+" "+event.y
 	p = Pointer.offset(event, this)
 	x = p.x
 	y = p.y
@@ -187,7 +190,7 @@ resizeMove = (event, layer) ->
 
 	for i in Grid.content.subLayers
 		if (x > i.minX && x < i.maxX && y > i.minY && y < i.maxY)
-			snapSelected(i.pos)
+			snspSelection(i.pos)
 			
 		if(i.pos >= selectedMin && i.pos <= selectedMax && (i.groupID < 0 || i.groupID == activeGroup))
 			i.states.switch("selected")
@@ -198,23 +201,26 @@ resizeMove = (event, layer) ->
 			if i.groupID == activeGroup
 				i.setGroup(-1)
 
-snapSizes = [1,2,3,6,9,12,15]
-snapSelected = (end, snap = 0)->
+configSelection = (end) ->
 	selectedEnd = end
 	selectedMin = Math.min(selectedStart, selectedEnd)
 	selectedMax = Math.max(selectedStart, selectedEnd)
 	selectedLength = selectedMax - selectedMin + 1
+	selectedDirection = if selectedStart <= selectedEnd then 1 else -1
 
-# 	len = selectedLength+1	
-# 	for size, i in snapSizes
-# 		if (len == snapSizes[i])
-# 			break
-# 		if (len > snapSizes[i] && len < snapSizes[i+1])
-# 			print "updated snap "+end+" to "+(end + (snapSizes[i+1] - snapSizes[snap]))
-# 			end += (snapSizes[i+1] - snapSizes[snap])
-# 			snapSelected(end)
-# 			break
-
+snapSizes = [1,2,3,6,9]
+snspSelection = (end) ->
+	configSelection(end)
+	
+	for size, i in snapSizes
+		if selectedLength >= snapSizes[-1..]
+			configSelection(selectedStart+((snapSizes[-1..] - 1) * selectedDirection))
+		if selectedLength == size
+			return
+		else if selectedLength > size and selectedLength < snapSizes[i+1]
+# 			print "SNAP " + selectedLength + " to " + snapSizes[i+1]
+			configSelection(selectedStart+((snapSizes[i+1] - 1) * selectedDirection))
+				
 groupEnd = (event, layer) ->
 # 	print "groupEnd("+[event, layer.name]+")"
 	Page.content.draggable = true
@@ -315,6 +321,8 @@ Add3.animate(properties: {x: 420, y: 1240, opacity: 1}, time: .5, delay: .2);
 #############
 # FUNCTIONS #
 #############
+timeout = (ms, func) -> setTimeout func, ms
+
 swapSpans = (array, aStart = 0 , aSpan = 0 , bStart = 0, bSpan = 0) ->
 	arrA = array[aStart...aStart+aSpan]
 	arrB = array[bStart...bStart+bSpan]
