@@ -139,13 +139,13 @@ GridMoveTracking = new Layer
 # IMAGES #
 ##########
 addImages = (count, group) ->
-	if group
+	if group >= 0
 		groups[group] = []
 	[0...count].forEach ->
 		img = new InstaImage
 			imageID: imageCount++
 			groupID: group
-		if group
+		if group >= 0
 			groups[group].push(img)
 		img.on Events.AnimationEnd, ->
 			Grid.updateContentSize()
