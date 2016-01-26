@@ -6,6 +6,7 @@ Framer.Defaults.Layer.backgroundColor = null
 bg = new BackgroundLayer
 	backgroundColor: "white"
 
+# {FontFace} = require "FontFace"
 {Pointer} = require "Pointer"
 GridModule = require "GridModule"
 InstaImage = require "InstaImage"
